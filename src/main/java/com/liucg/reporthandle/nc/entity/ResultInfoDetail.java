@@ -3,6 +3,7 @@ package com.liucg.reporthandle.nc.entity;
 import java.io.Serializable;
 
 public class ResultInfoDetail implements Serializable {
+
     private String bdh; // 磅单号
     private float wsdj; // 未税单价
     private float hsdj; //含税单价
@@ -12,6 +13,25 @@ public class ResultInfoDetail implements Serializable {
 
     private String fksj; //写入时间
     private String fkhum; //写入人员
+
+    private String status;
+    private String ncid;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNcid() {
+        return ncid;
+    }
+
+    public void setNcid(String ncid) {
+        this.ncid = ncid;
+    }
 
     public String getFksj() {
         return fksj;

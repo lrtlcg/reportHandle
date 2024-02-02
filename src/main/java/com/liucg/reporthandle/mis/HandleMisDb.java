@@ -58,11 +58,32 @@ public class HandleMisDb {
         return 0;
     }
 
+    /**
+     * NC发票数据回写到MIS中
+     * @param list
+     * @return
+     * @throws Exception
+     */
     public Integer addFpMsg(List<Object[]> list) throws Exception{
-        String sql="INSERT INTO zskj.NC2MIS_FP(ID, ORGNUM,  BDH, WSDJ, HSDJ, SL, WSJE, HSJE, FKSJ, FKHUM) VALUES ( ?,?,?,?,?,?,?,?,?,?)";
+        String sql="INSERT INTO zskj.NC2MIS_FP(ID, ORGNUM,  BDH, WSDJ, HSDJ, SL, WSJE, HSJE, FKSJ, FKHUM,STATUS) VALUES ( ?,?,?,?,?,?,?,?,?,?,?)";
         int flag=0;
            int[] flags=jdbcTemplate.batchUpdate(sql,list);
            flag=flags.length;
         return flag;
     }
+
+    /**
+     * 更新发票的状态
+     * @param list
+     * @return
+     * @throws Exception
+     */
+    public Integer updateFpMsg(List<Object[]> list) throws Exception{
+        String sql="UPDATE  zskj.NC2MIS_FP set STATUS=?,NCID=? where BDH=? AND ORGNUM=?";
+        int flag=0;
+        int[] flags=jdbcTemplate.batchUpdate(sql,list);
+        flag=flags.length;
+        return flag;
+    }
+
 }

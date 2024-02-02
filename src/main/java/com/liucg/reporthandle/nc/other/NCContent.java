@@ -42,7 +42,7 @@ public class NCContent {
         float hsdj = changeSl2Hs(HSDJ, WSDJ, SL); // 含税单价
         //        String SE = json.getString("SE"); //税额
         float se = hsje - wsje;//税额(计算出来的)
-        se=Math.round(se*100)/100.00f;
+        se = Math.round(se * 100) / 100.00f;
         String SE = Float.toString(se);//税额(计算出来的)
         WSJE = Float.toString(wsje); //未税金额(计算出来的)
         WSDJ = Float.toString(wsdj); //未税单价(计算出来的)
@@ -249,15 +249,17 @@ public class NCContent {
                 "                    <nnosubtax>\n" +
                 "                    </nnosubtax>\n" +
                 "                    <!--计税税额,最大长度为28,类型为:UFDouble-->\n" +
-                "                    <ncaltaxmny>"+WSJE+"</ncaltaxmny>\n" +
+                "                    <ncaltaxmny>" + WSJE + "</ncaltaxmny>\n" +
                 "                    <!--逆向征税标志,最大长度为1,类型为:UFBoolean-->\n" +
                 "                    <bopptaxflag>N</bopptaxflag>\n" +
                 "                    <!--计成本金额,最大长度为28,类型为:UFDouble-->\n" +
-                "                    <ncalcostmny>"+WSJE+"</ncalcostmny>\n" +
+                "                    <ncalcostmny>" + WSJE + "</ncalcostmny>\n" +
                 "                    <!--磅单号-->\n" +
                 "                    <vbdef12>" + BDH + "</vbdef12>\n" +
                 "                    <!--MIS唯一编码-->\n" +
                 "                    <vbdef13>" + ID + "</vbdef13>\n" +
+                "                    <!-- 必填，固定N，赠品,最大长度为1,类型为:UFBoolean -->\n"+
+                "                    <flargess>N</flargess>\n" +
                 "                </item>\n" +
                 "            </cgeneralbid>\n" +
                 "            <!--按实际，公司最新版本,最大长度为20,类型为:String-->\n" +
@@ -337,12 +339,12 @@ public class NCContent {
         if (StringUtils.isNotEmpty(sl)) {//税率取值
             sl1 = Float.parseFloat(sl);
         }
-        if ((StringUtils.isEmpty(hs) || Float.parseFloat(hs)==0.00) && StringUtils.isNotEmpty(ws)) {
-            float hs1 = Math.round(Float.parseFloat(ws) * (1 + (sl1 / 100)) * 100) /100.00f;//含税=未税*税率
-            result = Math.round((hs1 / (1 + (sl1 / 100))) * 100) /100.00f;
+        if ((StringUtils.isEmpty(hs) || Float.parseFloat(hs) == 0.00) && StringUtils.isNotEmpty(ws)) {
+            float hs1 = Math.round(Float.parseFloat(ws) * (1 + (sl1 / 100)) * 100) / 100.00f;//含税=未税*税率
+            result = Math.round((hs1 / (1 + (sl1 / 100))) * 100) / 100.00f;
         } else {
             float hs1 = Float.parseFloat(hs);
-            result = Math.round((hs1 / (1 + (sl1 / 100))) * 100) /100.00f; //转换成未税
+            result = Math.round((hs1 / (1 + (sl1 / 100))) * 100) / 100.00f; //转换成未税
         }
         return result;
     }
@@ -353,7 +355,7 @@ public class NCContent {
      * @param hs
      * @param ws
      * @param sl
-     * @return  含税数据
+     * @return 含税数据
      */
     private float changeSl2Hs(String hs, String ws, String sl) {
         float result = 0.0f;
@@ -361,8 +363,8 @@ public class NCContent {
         if (StringUtils.isNotEmpty(sl)) {//税率取值
             sl1 = Float.parseFloat(sl);
         }
-        if ((StringUtils.isEmpty(hs) || Float.parseFloat(hs)==0.00)  && StringUtils.isNotEmpty(ws)) {
-            result = Math.round((Float.parseFloat(ws) * (1 + (sl1 / 100))) * 100) /100.00f; //含税为空，含税=未税*税率
+        if ((StringUtils.isEmpty(hs) || Float.parseFloat(hs) == 0.00) && StringUtils.isNotEmpty(ws)) {
+            result = Math.round((Float.parseFloat(ws) * (1 + (sl1 / 100))) * 100) / 100.00f; //含税为空，含税=未税*税率
         } else {
             result = Float.parseFloat(hs); //含税不为空
         }
