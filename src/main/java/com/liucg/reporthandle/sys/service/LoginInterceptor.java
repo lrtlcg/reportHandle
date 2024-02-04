@@ -1,6 +1,8 @@
 package com.liucg.reporthandle.sys.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liucg.reporthandle.pub.BizException;
+import com.liucg.reporthandle.pub.ExceptionCodeEnum;
 import com.liucg.reporthandle.utils.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -40,20 +42,15 @@ public class LoginInterceptor implements HandlerInterceptor {
          * 从请求头中取出token，并判断其是否存在和合法
          */
         String token = request.getHeader("token");
+        boolean flag=false;
         if (token != null && tokenUtil.verifyToken(token)) {
-            return true;  //合法，放行
+            flag=true;
+
         }else {
-//            throw new ServiceException("100","还未登录");
-            Map<String,Object> map = new HashMap<>();
-            map.put("err",100);
-            map.put("msg","非法的token");
-            String json = JSONObject.toJSONString(map);
-            //设置响应头（告知浏览器：响应的数据类型为json、响应的数据编码表为utf-8）
-            response.setContentType("application/json;charset=utf-8");
-            //响应
-            response.getWriter().write(json); //不合法，通过json格式返回到页面
-            return false;
+            flag=false;
+            throw new BizException(ExceptionCodeEnum.INVALID_TOKEN);
         }
+        return flag;
     }
 
     /***

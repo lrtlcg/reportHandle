@@ -4,20 +4,26 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.liucg.reporthandle.mis.HandleMisDb;
+import com.liucg.reporthandle.nc.entity.ResultInfoDetail;
 import com.liucg.reporthandle.oa.OaRsa;
 import com.liucg.reporthandle.oa.OaSer;
+import com.liucg.reporthandle.pub.BizException;
+import com.liucg.reporthandle.pub.ExceptionCodeEnum;
+import com.liucg.reporthandle.pub.Result;
 import com.liucg.reporthandle.utils.JsonToXml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
+@RequestMapping("/test/hello")
 public class HelloTest {
     /**
      * 测试MIS 数据库查询
@@ -305,5 +311,74 @@ public class HelloTest {
                 .append("&ssoToken=")
                 .append(ssoToken);
         return openUrl.toString();
+    }
+
+    /**
+     * 断言的使用
+     * @return
+     */
+    @RequestMapping("/t11")
+    public ResultInfoDetail t11(String t){
+        try{
+            Assert.hasText(t,"不包含test");
+        }catch (Exception e){
+            System.out.println("不包含test:"+e);
+        }
+        ResultInfoDetail rsd=new ResultInfoDetail();
+        rsd.setBdh("Ab123456");
+        rsd.setStatus("ss");
+        return rsd;
+    }
+
+    /**
+     * 自定义异常测试
+     * @param t
+     * @return
+     */
+    @RequestMapping("/t12")
+    public Result<Boolean> t12(String t){
+        if(t==null){
+            return Result.error(ExceptionCodeEnum.EMPTY_PARAM);
+        }
+        boolean falg=false;
+        Result re=Result.success("sss");
+        return  re;
+    }
+
+    /**
+     * 自定义异常测试
+     * @param t
+     * @return
+     */
+    @RequestMapping("/t13")
+    public Result<ResultInfoDetail> t13(String t){
+        try{
+            Assert.hasText(t,"不包含test");
+        }catch (Exception e){
+            System.out.println("不包含test:"+e);
+            return Result.error(ExceptionCodeEnum.EMPTY_PARAM);
+        }
+        ResultInfoDetail rsd=new ResultInfoDetail();
+        rsd.setBdh("Ab123456");
+        rsd.setStatus("ss");
+        return Result.success(rsd);
+    }
+
+    /**
+     * 全局异常测试
+     * @param t
+     * @return
+     */
+    @RequestMapping("/t14")
+    public Result<ResultInfoDetail> t14(String t){
+        try{
+            Assert.hasText(t,"不包含test");
+        }catch (Exception e){
+            throw new BizException(ExceptionCodeEnum.EMPTY_PARAM,e);
+        }
+        ResultInfoDetail rsd=new ResultInfoDetail();
+        rsd.setBdh("Ab123456");
+        rsd.setStatus("ss");
+        return Result.success(rsd);
     }
 }
