@@ -15,9 +15,9 @@
     <description>reportHandle</description>
     <packaging>war</packaging>
     <properties>
-            <java.version>21</java.version>
-            <maven.compiler.source>1.8</maven.compiler.source>
-            <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>21</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -35,10 +35,10 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--        </dependency>-->
         <!--String Utils-->
         <dependency>
             <groupId>commons-lang</groupId>
@@ -61,7 +61,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
-<!--    lombok 日志-->
+        <!--    lombok 日志-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
@@ -70,39 +70,39 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-<!--   fastjson-->
+        <!--   fastjson-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.51</version>
         </dependency>
         <!--        转换成xml-->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-annotations</artifactId>-->
-<!--            <version>2.11.2</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
-<!--            <artifactId>jackson-dataformat-xml</artifactId>-->
-<!--            <version>2.13.4</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+        <!--            <artifactId>jackson-annotations</artifactId>-->
+        <!--            <version>2.11.2</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+        <!--            <artifactId>jackson-dataformat-xml</artifactId>-->
+        <!--            <version>2.13.4</version>-->
+        <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-databind</artifactId>-->
-<!--            <version>2.10.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-core</artifactId>-->
-<!--            <version>2.10.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-annotations</artifactId>-->
-<!--            <version>2.10.1</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+        <!--            <artifactId>jackson-databind</artifactId>-->
+        <!--            <version>2.10.1</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+        <!--            <artifactId>jackson-core</artifactId>-->
+        <!--            <version>2.10.1</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+        <!--            <artifactId>jackson-annotations</artifactId>-->
+        <!--            <version>2.10.1</version>-->
+        <!--        </dependency>-->
 
         <!--本地ncjar-->
         <dependency>
@@ -111,17 +111,17 @@
             <version>0.0.1</version>
         </dependency>
         <!--数据处理-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.httpcomponents</groupId>-->
-<!--            <artifactId>httpclient</artifactId>-->
-<!--            <version>4.5.13</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.httpcomponents</groupId>-->
+        <!--            <artifactId>httpclient</artifactId>-->
+        <!--            <version>4.5.13</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.16</version>
         </dependency>
-<!--        以下是token处理-->
+        <!--        以下是token处理-->
         <!--JWT-->
         <dependency>
             <groupId>com.nimbusds</groupId>
@@ -140,9 +140,9 @@
         </dependency>
         <!--hutool-->
         <dependency>
-        <groupId>cn.hutool</groupId>
-        <artifactId>hutool-all</artifactId>
-        <version>5.8.8</version>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.8</version>
         </dependency>
         <dependency>
             <groupId>com.auth0</groupId>
@@ -150,6 +150,29 @@
             <version>3.11.0</version>
         </dependency>
         <!--        以上是token处理-->
+        <!--        spribgboot  自带的数据库处理-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--        </dependency>-->
+
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.solr</groupId>-->
+<!--            <artifactId>solr-solrj</artifactId>-->
+<!--            <version>5.3.1</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.httpcomponents</groupId>-->
+<!--            <artifactId>httpmime</artifactId>-->
+<!--            <version>4.5.6</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>

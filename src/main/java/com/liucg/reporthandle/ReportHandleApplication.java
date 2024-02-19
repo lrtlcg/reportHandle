@@ -14,8 +14,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
      * 1、启动类继承SpringBootServletInitializer
      * 2、重写configure方法
      * @description:
-     * @author: ArvinWoo
-     * @date: 2019年2月15日上午
+     * @author: liucg
+     * @date: 2024年2月15日上午
      */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
