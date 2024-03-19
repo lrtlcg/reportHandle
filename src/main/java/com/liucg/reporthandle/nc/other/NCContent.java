@@ -18,7 +18,7 @@ public class NCContent {
 //        JSONObject json = JSON.parseObject(misJson);
         /**
          * 'NCDate', 'RLName', 'RlNCBM', 'BDH', 'ID', 'GYSMC', 'GYSBM', 'JZ', 'CKBM',
-         * 	'KWBM', 'WSDJ', 'HSDJ', 'SL', 'HSJE', 'WSJE', 'ZZ', 'CJR', 'ZDR', 'SM', 'CGDDH', 'DDTZJ', 'DDHZJ','SE'
+         * 	'KWBM', 'WSDJ', 'HSDJ', 'SL', 'HSJE', 'WSJE', 'ZZ', 'CJR', 'ZDR', 'SM', 'CGDDH', 'DDTZJ', 'DDHZJ','SE','KGY'
          */
         String NCDate = json.getString("NCDate"); // NC 日期
         String RLName = json.getString("RLName"); // 燃料名称
@@ -36,6 +36,7 @@ public class NCContent {
 
         String HSJE = json.getString("HSJE"); //含税金额
         String WSJE = json.getString("WSJE"); //未税金额
+        String KGY = json.getString("KGY"); //未税金额
         float wsje = changeSl2Ws(HSJE, WSJE, SL); // 未税金额
         float wsdj = changeSl2Ws(HSDJ, WSDJ, SL); // 未税单价
         float hsje = changeSl2Hs(HSJE, WSJE, SL); //含税金额
@@ -140,11 +141,11 @@ public class NCContent {
                 "                     <!--必填 ，固定21 源头单据类型,最大长度为20,类型为:String-->\n" +
                 "                    <cfirsttype>21</cfirsttype>\n" +
                 "                    <!--必填 ，固定21-01 源头单据交易类型,最大长度为20,类型为:String-->\n" +
-                "                    <cfirsttranstype>21-01</cfirsttranstype>\n" +
+                "                    <cfirsttranstype>21-Cxx-06</cfirsttranstype>\n" +
                 "                    <!--必填，供应商编码,最大长度为20,类型为:String-->\n" +
                 "                    <cvendorid>" + GYSBM + "</cvendorid>\n" +
                 "                    <!--必填，固定值45-01 出入库类型,最大长度为20,类型为:String-->\n" +
-                "                    <cbodytranstypecode>45-01</cbodytranstypecode>\n" +
+                "                    <cbodytranstypecode>45-CXX-06</cbodytranstypecode>\n" +
                 "                    <!--必填 ，实际值，组织编码库存组织最新版本,最大长度为20,类型为:String-->\n" +
                 "                    <pk_org>" + ZZ + "</pk_org>\n" +
                 "                    <!--必填 ，实际值，组织编码库存组织,最大长度为20,类型为:String-->\n" +
@@ -161,8 +162,7 @@ public class NCContent {
                 "                    <nchangestdrate>1.00000000</nchangestdrate>\n" +
                 "                    <!--必填 本位币,最大长度为20,类型为:String-->\n" +
                 "                    <ccurrencyid>CNY</ccurrencyid>\n" +
-
-                "<!--主无税单价,最大长度为28,类型为:UFDouble-->\n" +
+                "                    <!--主无税单价,最大长度为28,类型为:UFDouble-->\n" +
                 "                    <norigprice>" + WSDJ + "</norigprice>\n" +
                 "                    <!--主本币无税单价,最大长度为28,类型为:UFDouble-->\n" +
                 "                    <nprice>" + WSDJ + "</nprice>\n" +
@@ -178,7 +178,6 @@ public class NCContent {
                 "                    <ntaxprice>" + HSDJ + "</ntaxprice>\n" +
                 "                    <!--主含税单价,最大长度为28,类型为:UFDouble-->\n" +
                 "                    <norigtaxprice>" + HSDJ + "</norigtaxprice>" +
-
                 "                    <!--必填 主无税净价,最大长度为28,类型为:UFDouble-->\n" +
                 "                    <norignetprice>" + WSDJ + "</norignetprice>\n" +
                 "                    <!--必填 主无税净价,最大长度为28,类型为:UFDouble-->\n" +
@@ -258,8 +257,15 @@ public class NCContent {
                 "                    <vbdef12>" + BDH + "</vbdef12>\n" +
                 "                    <!--MIS唯一编码-->\n" +
                 "                    <vbdef13>" + ID + "</vbdef13>\n" +
-                "                    <!-- 必填，固定N，赠品,最大长度为1,类型为:UFBoolean -->\n"+
+                "                    <!-- 必填，固定N，赠品,最大长度为1,类型为:UFBoolean -->\n" +
                 "                    <flargess>N</flargess>\n" +
+                "                   <!--必填，固定值 报价单位,最大长度为20,类型为:String-->\n" +
+                "                    <cqtunitid>mt</cqtunitid>" +
+                "                   <!--必填 实际值，每车重量，报价数量,最大长度为28,类型为:UFDouble-->\n" +
+                "                   <nqtunitnum>" + JZ + "</nqtunitnum>" + "" +
+                "                     <!-- 报价换算率,最大长度为60,类型为:String -->\n" +
+                "                     <vqtunitrate>1.00/1.00</vqtunitrate>" +
+
                 "                </item>\n" +
                 "            </cgeneralbid>\n" +
                 "            <!--按实际，公司最新版本,最大长度为20,类型为:String-->\n" +
@@ -267,7 +273,7 @@ public class NCContent {
                 "            <!--按实际，公司,最大长度为20,类型为:String-->\n" +
                 "            <corpvid>" + ZZ + "</corpvid>\n" +
                 "            <!--固定，业务流程,最大长度为20,类型为:String-->\n" +
-                "            <cbiztype>PU01</cbiztype>\n" +
+                "            <cbiztype>Cxx-06</cbiztype>\n" +
                 "            <!--空，单据号,最大长度为40,类型为:String-->\n" +
                 "            <vbillcode></vbillcode>\n" +
                 "            <!--按实际，仓库,最大长度为20,类型为:String-->\n" +
@@ -275,27 +281,27 @@ public class NCContent {
                 "            <!--按实际，单据日期,最大长度为19,类型为:UFDate-->\n" +
                 "            <dbilldate>" + NCDate + "</dbilldate>\n" +
                 "            <!--固定，出入库类型编码,最大长度为20,类型为:String-->\n" +
-                "            <vtrantypecode>45-01</vtrantypecode>\n" +
+                "            <vtrantypecode>45-Cxx-06</vtrantypecode>\n" +
                 "            <!--MIS固定值,最大长度为20,类型为:String-->\n" +
-                "            <cwhsmanagerid>03150</cwhsmanagerid>\n" +
+                "            <cwhsmanagerid>" + KGY + "</cwhsmanagerid>\n" +
                 "            <!--总数量,最大长度为28,类型为:UFDouble-->\n" +
                 "            <ntotalnum>" + JZ + "</ntotalnum>\n" +
                 "            <!--固定，采购退库,最大长度为1,类型为:UFBoolean-->\n" +
                 "            <freplenishflag>N</freplenishflag>\n" +
                 "             <!--备注,最大长度为181,类型为:String-->\n" +
-                "            <vnote>按实际到货入库</vnote>\n" +
+                "            <vnote></vnote>\n" +
                 "            <!--固定值2，单据状态,最大长度为0,类型为:Integer-->\n" +
                 "            <fbillflag>2</fbillflag>\n" +
                 "            <!--必填，创建人,最大长度为20,类型为:String-->\n" +
                 "            <creator>" + CJR + "</creator>\n" +
                 "            <!--必填，制单人,最大长度为20,类型为:String-->\n" +
-                "            <billmaker>" + ZDR + "</billmaker>\n" +
+                "            <billmaker>" + CJR + "</billmaker>\n" +
                 "            <!--必填，制单时间，推送日期，最大长度为19,类型为:UFDateTime-->\n" +
                 "            <creationtime>" + dft.format(System.currentTimeMillis()) + "</creationtime>\n" +
                 "            <!--默认，空，签字人,最大长度为20,类型为:String-->\n" +
-                "            <approver></approver>\n" +
+                "            <approver>" + ZDR + "</approver>\n" +
                 "            <!--默认，空，签字时间,最大长度为19,类型为:UFDateTime-->\n" +
-                "            <taudittime></taudittime>\n" +
+                "            <taudittime>" + dft.format(System.currentTimeMillis()) + "</taudittime>\n" +
                 "            <!--实际值，应付财务组织最新版本,最大长度为20,类型为:String-->\n" +
                 "            <cpayfinorgoid>" + ZZ + "</cpayfinorgoid>\n" +
                 "            <!--实际值，应付财务组织,最大长度为20,类型为:String-->\n" +
@@ -311,12 +317,14 @@ public class NCContent {
                 "            <!--必填，供应商编码,最大长度为20,类型为:String-->\n" +
                 "            <cvendorid>" + GYSBM + "</cvendorid>\n" +
                 "            <!--固定值，出入库类型,最大长度为20,类型为:String-->\n" +
-                "            <ctrantypeid>45-01</ctrantypeid>\n" +
+                "            <ctrantypeid>45-Cxx-06</ctrantypeid>\n" +
                 "            <!--固定值，发货国,最大长度为20,类型为:String-->\n" +
                 "            <csendcountryid>CN</csendcountryid>\n" +
                 "            <!--固定值，收货国,最大长度为20,类型为:String-->\n" +
                 "            <crececountryid>CN</crececountryid>\n" +
                 "            <!--固定值，报税国,最大长度为20,类型为:String-->\n" +
+                "<!--外系统对接，固定“是”-->" +
+                "<vdef15>是</vdef15>" +
                 "            <ctaxcountryid>CN</ctaxcountryid>\n" +
                 "        </billhead>\n" +
                 "    </bill>\n" +

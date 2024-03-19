@@ -3,22 +3,12 @@ package com.liucg.reporthandle.nc.other;
 public class NCConst {
 
     //	NC正式环境start
-//	//ws地址
-//	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=01";
-//	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0&operator=0001A210000000000JEB";
-//	NC正式环境end
+//	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0";
+	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0&operator=0001A210000000000JEB";
 //	NC测试环境start
     //ws地址
-//	public static final String ws_url = "http://192.168.31.11:8090/service/XChangeServlet?account=03&groupcode=0&operator=0001A210000000000JEB";
-//	public static final String ws_url = "http://192.168.31.29:8080/service/XChangeServlet?account=zscs&groupcode=0&operator=0001A210000000000JEB";
-//    public static final String ws_url = "http://192.168.31.29:8080/service/XChangeServlet?account=01&groupcode=0&operator=0001A210000000000JEB";
 //    public static final String ws_url = "http://192.168.31.29:8080/service/XChangeServlet?account=nc6504&groupcode=0&operator=0001A210000000000JEB";
-    public static final String ws_url = "http://192.168.31.29:8080/service/XChangeServlet?account=nc6504&groupcode=0&operator=0001A210000000000JEB";
-    //OA==》NC系统接口地址
-    //正式环境
-//	public static final String ws_url2 = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0";
-    //测试地址：
-//	public static final String ws_url2 = "http://192.168.31.29:8080/service/XChangeServlet?account=zscs&groupcode=0";
+
 
     //	NC测试环境end
     public static final String[] title = {"费用报销251","差旅费报销261","借款报销271","GI-3.5供方信息录入"};
