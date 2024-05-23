@@ -3,11 +3,11 @@ package com.liucg.reporthandle.nc.other;
 public class NCConst {
 
     //	NC正式环境start
-//	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0";
-	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0&operator=0001A210000000000JEB";
+	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0";
+//	public static final String ws_url = "http://192.168.31.9:8080/service/XChangeServlet?account=01&groupcode=0&operator=0001A210000000000JEB";
 //	NC测试环境start
     //ws地址
-//    public static final String ws_url = "http://192.168.31.29:8080/service/XChangeServlet?account=nc6504&groupcode=0&operator=0001A210000000000JEB";
+    public static final String ws_url_test = "http://192.168.31.29:8080/service/XChangeServlet?account=nc6504&groupcode=0&operator=0001A210000000000JEB";
 
 
     //	NC测试环境end

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.liucg.reporthandle.mis.HandleMisDb;
 import com.liucg.reporthandle.nc.other.NCContent;
 import com.liucg.reporthandle.nc.server.NCServer;
+import com.liucg.reporthandle.nc.server.NCServerTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,8 @@ import java.util.List;
 public class NCController {
     @Autowired
     private NCServer ncServer;
+    @Autowired
+    private NCServerTest ncServerTest;
     @Autowired
     private NCContent ncContent;
     @Autowired
@@ -57,6 +60,35 @@ public class NCController {
             handleMisDb.batchAddDbToMis(resultList);// 提交到mis
         }
 
+        return flag;
+    }
+    /**
+     * 测试环境
+     */
+    @RequestMapping("/sendMis2NCTest")
+    @CrossOrigin(origins = {"https://report.sunpowergroup.com.cn:8001/"})
+    public Boolean SendXmlMis2NcTest(String misJosn){
+        Boolean flag=false;
+//        HttpURLConnection connection=NCServerTest.createConn();
+        /**
+         * 1.先传一条试试
+         * 2.遍历多条
+         * 3.回写数据库
+         * 4.关闭HttpURLConnection
+         * 5.日志记录，每天一条日志
+         */
+        List<Object[]> resultList =new ArrayList<Object[]>(); //保存到数据库
+        SimpleDateFormat dft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        JSONObject json= JSON.parseObject(misJosn);
+        List list= (List) json.get("pieNC");
+        if (list!=null){
+            for(Object jb:list){
+                JSONObject jsons = JSON.parseObject(jb.toString());
+                String result[]= ncServerTest.sendXmlToNC(NCServerTest.createConn(), ncContent.fromatXml(jsons)); // 写入Nc
+                resultList.add(new Object[]{jsons.getString("ID"),result[0],result[1],dft.format(System.currentTimeMillis()).toString(),result[2],jsons.getString("ZZ"),jsons.getString("JZ"),"_Test_"+jsons.getString("CGDDH")});
+            }
+            handleMisDb.batchAddDbToMis(resultList);// 提交到mis
+        }
         return flag;
     }
 }

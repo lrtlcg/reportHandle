@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 
 @Component
-public class NCContent {
+public class NCContentcopy {
     /**
      * MIS中生物质数据同步至NC系统，格式化成xml格式
      *
@@ -38,18 +38,17 @@ public class NCContent {
         String WSJE = json.getString("WSJE"); //未税金额
         String KGY = json.getString("KGY"); //未税金额
 //        float wsje = changeSl2Ws(HSJE, WSJE, SL); // 未税金额
-//        float wsdj = changeSl2Ws(HSDJ, WSDJ, SL); // 未税单价
+        float wsdj = changeSl2Ws(HSDJ, WSDJ, SL); // 未税单价
 //        float hsje = changeSl2Hs(HSJE, WSJE, SL); //含税金额
-//        float hsdj = changeSl2Hs(HSDJ, WSDJ, SL); // 含税单价
-        //        String SE = json.getString("SE"); //税额
+        float hsdj = changeSl2Hs(HSDJ, WSDJ, SL); // 含税单价
+        String SE = json.getString("SE"); //税额
 //        float se = hsje - wsje;//税额(计算出来的)
 //        se = Math.round(se * 100) / 100.00f;
 //        String SE = Float.toString(se);//税额(计算出来的)
-        String SE= json.getString("SE");
 //        WSJE = Float.toString(wsje); //未税金额(计算出来的)
-//        WSDJ = Float.toString(wsdj); //未税单价(计算出来的)
+        WSDJ = Float.toString(wsdj); //未税单价(计算出来的)
 //        HSJE = Float.toString(hsje); // 含税金额
-//        HSDJ = Float.toString(hsdj); // 含税单价
+        HSDJ = Float.toString(hsdj); // 含税单价
         String ZZ = json.getString("ZZ"); //组织结构
         String CJR = json.getString("CJR"); //创建人
         String ZDR = json.getString("ZDR"); //制单人
@@ -181,8 +180,8 @@ public class NCContent {
                 "                    <norigtaxprice>" + HSDJ + "</norigtaxprice>" +
                 "                    <!--必填 主无税净价,最大长度为28,类型为:UFDouble-->\n" +
                 "                    <norignetprice>" + WSDJ + "</norignetprice>\n" +
-                "                    <!--必填 主含税净价,最大长度为28,类型为:UFDouble-->\n" +
-                "                    <norigtaxnetprice>" + HSDJ + "</norigtaxnetprice>\n" +
+                "                    <!--必填 主无税净价,最大长度为28,类型为:UFDouble-->\n" +
+                "                    <norigtaxnetprice>" + WSDJ + "</norigtaxnetprice>\n" +
                 "                    <!--必填 主本币无税净价,最大长度为28,类型为:UFDouble-->\n" +
                 "                    <nnetprice>" + WSDJ + "</nnetprice>\n" +
                 "                    <!--必填 无税净价,最大长度为28,类型为:UFDouble-->\n" +
