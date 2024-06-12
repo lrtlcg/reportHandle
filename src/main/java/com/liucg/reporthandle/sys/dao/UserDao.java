@@ -3,6 +3,7 @@ package com.liucg.reporthandle.sys.dao;
 import com.liucg.reporthandle.sys.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,6 +16,7 @@ import java.util.Map;
 @Slf4j
 public class UserDao {
     @Autowired
+    @Qualifier("jdbcTemplateOne")
     JdbcTemplate jdbcTemplate;
 
     /**

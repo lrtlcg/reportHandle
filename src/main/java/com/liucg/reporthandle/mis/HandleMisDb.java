@@ -2,7 +2,9 @@ package com.liucg.reporthandle.mis;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.Map;
 @Slf4j
 public class HandleMisDb {
     @Autowired
+    @Qualifier("jdbcTemplateOne")
     private JdbcTemplate jdbcTemplate;
     /**
      * 获取新泰生物质数据

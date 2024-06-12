@@ -17,7 +17,7 @@ public class WebAppConfigurer implements WebMvcConfigurer {
 //        registry.addInterceptor(new RequestProcessInterceptor())
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login", "/register", "/image/**", "/js/**", "/css/**","/nc/**","/mis/**","/oa/**","/test/**")
+                .excludePathPatterns("/login", "/register", "/image/**", "/js/**", "/css/**","/nc/**","/mis/**","/oa/**","/test/**","/report/**")
                 .order(0);
     }
 }
